@@ -1,0 +1,353 @@
+.static_data 0
+
+# Entry point of code.
+call main
+jmp @@exit_reserved_name
+# ------------------------
+# Beginning of class IntList
+
+# Fields: 
+# offset 0 from object given to non static field (value, 1)
+# offset 1 from object given to non static field (next, 2)
+
+
+# Constructors:
+
+
+C_1:
+# Start of Constructor (init function): (CONSTRUCTOR 1)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# This object memory address located in a0
+
+# Constructor body: 
+# BLOCK START
+# BLOCK END
+ret
+# End of Constructor: (CONSTRUCTOR 1)
+
+
+
+
+# Methods:
+
+
+M_1: # label for method
+# Start of Method: (create_list, 1)
+# Reserving temps for formal variables
+# register t0 allocated for variable v
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t1 allocated for variable new_element
+# Begin assignment:
+# Start of new object expr:
+move_immed_i t2, 0
+move_immed_i t3, 2
+halloc t2, t3
+save a0
+move a0, t2
+save t0
+save t1
+save t2
+call C_1
+restore t0
+restore t1
+restore t2
+restore a0
+# End of new object expr:
+move_immed_i t3 0
+hstore t1, t3, t2
+move t3 t2
+# End assignment
+# Begin assignment:
+# Start field access (value,1):
+move_immed_i t5 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t5
+move t4, t5
+hload t2, t2, t4
+# End field access (value,1)
+move_immed_i t5 0
+hstore t2, t5, t0
+move t5 t0
+# End assignment
+# Begin assignment:
+# Start field access (next,2):
+move_immed_i t7 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t4, t7
+move t6, t7
+hload t4, t4, t6
+# End field access (next,2)
+# Suppose 0 is used as the value for null in decaf absmc
+move_immed_i t7, 0
+move_immed_i t6 0
+hstore t4, t6, t7
+move t6 t7
+# End assignment
+# Return statement start
+move a0, t1
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (create_list, 1)
+
+
+
+
+M_2: # label for method
+# Start of Method: (insert, 2)
+# Reserving temps for formal variables
+# register t0 allocated for variable v
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t1 allocated for variable new_element
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 1 # pass in the offset of the calling object as the first parameter
+save a1
+move a1 t0
+save t0
+save t1
+save t2
+call M_1
+restore t0
+restore t1
+restore t2
+restore a1
+move t2 a0
+restore a0
+# End method call expr
+move_immed_i t3 0
+hstore t1, t3, t2
+move t3 t2
+# End assignment
+# Begin assignment:
+# Start field access (next,2):
+move_immed_i t5 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t5
+move t4, t5
+hload t2, t2, t4
+# End field access (next,2)
+# Start this expr
+move t5, a0
+# End this expr
+move_immed_i t4 0
+hstore t2, t4, t5
+move t4 t5
+# End assignment
+# Return statement start
+move a0, t1
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (insert, 2)
+
+
+
+
+M_3: # label for method
+# Start of Method: (search, 3)
+# Reserving temps for formal variables
+# register t0 allocated for variable v
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+
+# If statement start
+# Begin Binary Expression
+# Start field access (value,1):
+# Start this expr
+move t2, a0
+# End this expr
+move_immed_i t5 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t3, t5
+move t4, t5
+hload t3, t3, t4
+# End field access (value,1)
+# eq
+isub t1, t3, t0
+move_immed_i t5 0
+ileq t1 t1 t5
+# End Binary Expression
+bz t1, false1
+# True code
+# BLOCK START
+# Return statement start
+# Suppose 1 is used as the value for true in decaf_absmc
+move_immed_i t5, 1
+move a0, t5
+ret
+# Return statement end
+# BLOCK END
+jmp if_end1
+false1:
+
+# If statement start
+# Begin Binary Expression
+# Start field access (next,2):
+# Start this expr
+move t4, a0
+# End this expr
+move_immed_i t8 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t6, t8
+move t7, t8
+hload t6, t6, t7
+# End field access (next,2)
+# Suppose 0 is used as the value for null in decaf absmc
+move_immed_i t8, 0
+# eq
+isub t3, t6, t8
+move_immed_i t7 0
+ileq t3 t3 t7
+# End Binary Expression
+bz t3, false0
+# True code
+# BLOCK START
+# Return statement start
+# Suppose 0 is used as the value for false in decaf_absmc
+move_immed_i t7, 0
+move a0, t7
+ret
+# Return statement end
+# BLOCK END
+jmp if_end0
+false0:
+# Return statement start
+# Start method call expr:
+save a0
+move a0, 3 # pass in the offset of the calling object as the first parameter
+save a1
+move a1 t0
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t7
+save t8
+call M_3
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t7
+restore t8
+restore a1
+move t8 a0
+restore a0
+# End method call expr
+move a0, t8
+ret
+# Return statement end
+# False code
+if_end0:
+# If statement end
+
+# False code
+if_end1:
+# If statement end
+
+# BLOCK END
+# End of Method: (search, 3)
+
+
+
+
+M_4: # label for method
+# Start of Method: (length, 4)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+
+# If statement start
+# Begin Binary Expression
+# Start field access (next,2):
+# Start this expr
+move t1, a0
+# End this expr
+move_immed_i t4 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t4
+move t3, t4
+hload t2, t2, t3
+# End field access (next,2)
+# Suppose 0 is used as the value for null in decaf absmc
+move_immed_i t4, 0
+# eq
+isub t0, t2, t4
+move_immed_i t3 0
+ileq t0 t0 t3
+# End Binary Expression
+bz t0, false2
+# True code
+# Return statement start
+move_immed_i t3, 1
+move a0, t3
+ret
+# Return statement end
+jmp if_end2
+false2:
+# Return statement start
+# Begin Binary Expression
+move_immed_i t2, 1
+# Start method call expr:
+save a0
+move a0, 5 # pass in the offset of the calling object as the first parameter
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+call M_4
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+move t5 a0
+restore a0
+# End method call expr
+# Add
+iadd t4, t2, t5
+# End Binary Expression
+move a0, t4
+ret
+# Return statement end
+# False code
+if_end2:
+# If statement end
+
+# BLOCK END
+# End of Method: (length, 4)
+
+
+# End of class IntList
+# ------------------------
+# No main function found: generating main label
+main:
+ret
+@@exit_reserved_name: 

@@ -1,0 +1,157 @@
+.static_data 0
+
+# Entry point of code.
+call main
+jmp @@exit_reserved_name
+# ------------------------
+# Beginning of class rfib
+
+# Fields: 
+
+
+# Constructors:
+
+
+# Methods:
+
+
+M_1: # label for method
+# Start of Method: (fib, 1)
+# Reserving temps for formal variables
+# register t0 allocated for variable n
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+
+# If statement start
+# Begin Binary Expression
+move_immed_i t2, 2
+# lte
+ileq t1, t0, t2
+# End Binary Expression
+bz t1, false0
+# True code
+# Return statement start
+move_immed_i t3, 1
+move a0, t3
+ret
+# Return statement end
+jmp if_end0
+false0:
+# Return statement start
+# Begin Binary Expression
+# Start method call expr:
+save a0
+move a0, -1 # place holder value as the object has no dynamically allocated fields
+            # this value has no usage
+save a1
+# Begin Binary Expression
+move_immed_i t6, 1
+# Sub
+isub t5, t0, t6
+# End Binary Expression
+move a1 t5
+save t0
+save t1
+save t2
+save t3
+save t4
+call M_1
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore a1
+move t4 a0
+restore a0
+# End method call expr
+# Start method call expr:
+save a0
+move a0, -1 # place holder value as the object has no dynamically allocated fields
+            # this value has no usage
+save a1
+# Begin Binary Expression
+move_immed_i t6, 2
+# Sub
+isub t7, t0, t6
+# End Binary Expression
+move a1 t7
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+call M_1
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore a1
+move t5 a0
+restore a0
+# End method call expr
+# Add
+iadd t2, t4, t5
+# End Binary Expression
+move a0, t2
+ret
+# Return statement end
+# False code
+if_end0:
+# If statement end
+
+# BLOCK END
+# End of Method: (fib, 1)
+
+
+
+
+main: # label for method
+# Start of Method: (main, 2)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t0 allocated for variable r
+# register t1 allocated for variable n
+# Begin assignment:
+move_immed_i t2, 5
+move t1 t2
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, -1 # place holder value as the object has no dynamically allocated fields
+            # this value has no usage
+save a1
+move a1 t1
+save t0
+save t1
+save t2
+call M_1
+restore t0
+restore t1
+restore t2
+restore a1
+move t2 a0
+restore a0
+# End method call expr
+move t0 t2
+# End assignment
+# BLOCK END
+ret
+# End of Method: (main, 2)
+
+
+# End of class rfib
+# ------------------------
+@@exit_reserved_name: 

@@ -1,0 +1,124 @@
+.static_data 3
+
+# Entry point of code.
+call main
+jmp @@exit_reserved_name
+# ------------------------
+# Beginning of class A
+
+# Fields: 
+# sap offset 0 given to static field (i, 1)
+# sap offset 1 given to static field (f, 2)
+# sap offset 2 given to static field (b, 3)
+
+
+# Constructors:
+
+
+# Methods:
+# End of class A
+# ------------------------
+# ------------------------
+# Beginning of class a05_test08
+
+# Fields: 
+
+
+# Constructors:
+
+
+# Methods:
+
+
+main: # label for method
+# Start of Method: (main, 1)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t0 allocated for variable i1
+# register t1 allocated for variable i2
+# register t2 allocated for variable f1
+# register t3 allocated for variable f2
+# register t4 allocated for variable b1
+# register t5 allocated for variable b2
+# Begin assignment:
+move_immed_i t6, 10
+move t0 t6
+# End assignment
+# Begin assignment:
+move_immed_f t6, 20.0
+move t2 t6
+# End assignment
+# Begin assignment:
+# Suppose 0 is used as the value for false in decaf_absmc
+move_immed_i t6, 0
+move t4 t6
+# End assignment
+# Begin assignment:
+# Start field access (i,1):
+move_immed_i t8, 0
+move t6, t8
+move_immed_i t7, 0
+hload t6, t6, t7
+# End field access (i,1)
+hstore sap, t6, t0
+move t8 t0
+# End assignment
+# Begin assignment:
+# Start field access (f,2):
+move_immed_i t10, 1
+move t7, t10
+move_immed_i t9, 0
+hload t7, t7, t9
+# End field access (f,2)
+hstore sap, t7, t2
+move t10 t2
+# End assignment
+# Begin assignment:
+# Start field access (b,3):
+move_immed_i t12, 2
+move t9, t12
+move_immed_i t11, 0
+hload t9, t9, t11
+# End field access (b,3)
+hstore sap, t9, t4
+move t12 t4
+# End assignment
+# Begin assignment:
+# Start field access (i,1):
+move_immed_i t14, 0
+move t11, t14
+move_immed_i t13, 0
+hload t11, t11, t13
+# End field access (i,1)
+move t1 t11
+# End assignment
+# Begin assignment:
+# Start field access (f,2):
+move_immed_i t13, 1
+move t11, t13
+move_immed_i t14, 0
+hload t11, t11, t14
+# End field access (f,2)
+move t3 t11
+# End assignment
+# Begin assignment:
+# Start field access (b,3):
+move_immed_i t14, 2
+move t11, t14
+move_immed_i t13, 0
+hload t11, t11, t13
+# End field access (b,3)
+move t5 t11
+# End assignment
+# BLOCK END
+ret
+# End of Method: (main, 1)
+
+
+# End of class a05_test08
+# ------------------------
+@@exit_reserved_name: 

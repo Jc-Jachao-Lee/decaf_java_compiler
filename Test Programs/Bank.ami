@@ -1,0 +1,771 @@
+.static_data 0
+
+# Entry point of code.
+call main
+jmp @@exit_reserved_name
+# ------------------------
+# Beginning of class BankAccount
+
+# Fields: 
+# offset 0 from object given to non static field (account_number, 1)
+# offset 1 from object given to non static field (balance, 2)
+
+
+# Constructors:
+
+
+C_1:
+# Start of Constructor (init function): (CONSTRUCTOR 1)
+# Reserving temps for formal variables
+save t0
+## Loading initial values for formal variables
+move t0 a1
+# This object memory address located in a0
+
+# Constructor body: 
+# BLOCK START
+# Begin assignment:
+# Start field access (account_number,1):
+# Start this expr
+move t1, a0
+# End this expr
+move_immed_i t4, 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t4
+move t3, t4
+hload t2, t2, t3
+# End field access (account_number,1)
+move_immed_i t4 0
+hstore t2, t4, t0
+move t4 t0
+# End assignment
+# Begin assignment:
+# Start field access (balance,2):
+# Start this expr
+move t3, a0
+# End this expr
+move_immed_i t7, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t5, t7
+move t6, t7
+hload t5, t5, t6
+# End field access (balance,2)
+move_immed_f t7, 0.0
+move_immed_i t6 0
+hstore t5, t6, t7
+move t6 t7
+# End assignment
+# BLOCK END
+ret
+# End of Constructor: (CONSTRUCTOR 1)
+
+
+
+
+# Methods:
+
+
+M_1: # label for method
+# Start of Method: (deposit, 1)
+# Reserving temps for formal variables
+# register t0 allocated for variable amount
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# Begin assignment:
+# Start field access (balance,2):
+# Start this expr
+move t1, a0
+# End this expr
+move_immed_i t4, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t4
+move t3, t4
+hload t2, t2, t3
+# End field access (balance,2)
+# Begin Binary Expression
+# Start field access (balance,2):
+# Start this expr
+move t3, a0
+# End this expr
+move_immed_i t7, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t5, t7
+move t6, t7
+hload t5, t5, t6
+# End field access (balance,2)
+# Add
+fadd t4, t5, t0
+# End Binary Expression
+move_immed_i t7 0
+hstore t2, t7, t4
+move t7 t4
+# End assignment
+# Return statement start
+# Start field access (balance,2):
+# Start this expr
+move t4, a0
+# End this expr
+move_immed_i t8, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t5, t8
+move t6, t8
+hload t5, t5, t6
+# End field access (balance,2)
+move a0, t5
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (deposit, 1)
+
+
+
+
+M_2: # label for method
+# Start of Method: (withdrawal, 2)
+# Reserving temps for formal variables
+# register t0 allocated for variable amount
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+
+# If statement start
+# Begin Binary Expression
+# Start field access (balance,2):
+# Start this expr
+move t2, a0
+# End this expr
+move_immed_i t5, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t3, t5
+move t4, t5
+hload t3, t3, t4
+# End field access (balance,2)
+# gt
+fgt t1, t3, t0
+# End Binary Expression
+bz t1, false0
+# True code
+# BLOCK START
+# Begin assignment:
+# Start field access (balance,2):
+# Start this expr
+move t5, a0
+# End this expr
+move_immed_i t6, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t3, t6
+move t4, t6
+hload t3, t3, t4
+# End field access (balance,2)
+# Begin Binary Expression
+# Start field access (balance,2):
+# Start this expr
+move t4, a0
+# End this expr
+move_immed_i t9, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t7, t9
+move t8, t9
+hload t7, t7, t8
+# End field access (balance,2)
+# Sub
+fsub t6, t7, t0
+# End Binary Expression
+move_immed_i t9 0
+hstore t3, t9, t6
+move t9 t6
+# End assignment
+# BLOCK END
+jmp if_end0
+false0:
+# False code
+if_end0:
+# If statement end
+
+# Return statement start
+# Start field access (balance,2):
+# Start this expr
+move t1, a0
+# End this expr
+move_immed_i t8, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t6, t8
+move t7, t8
+hload t6, t6, t7
+# End field access (balance,2)
+move a0, t6
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (withdrawal, 2)
+
+
+
+
+M_3: # label for method
+# Start of Method: (get_balance, 3)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# Return statement start
+# Start field access (balance,2):
+# Start this expr
+move t0, a0
+# End this expr
+move_immed_i t3, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t1, t3
+move t2, t3
+hload t1, t1, t2
+# End field access (balance,2)
+move a0, t1
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (get_balance, 3)
+
+
+# End of class BankAccount
+# ------------------------
+# ------------------------
+# Beginning of class CheckingAccount
+
+# Fields: 
+# offset 0 from object given to non static field (checkNumber, 3)
+
+
+# Constructors:
+
+
+C_2:
+# Start of Constructor (init function): (CONSTRUCTOR 2)
+# Reserving temps for formal variables
+save t0
+## Loading initial values for formal variables
+move t0 a1
+# This object memory address located in a0
+
+# Constructor body: 
+# BLOCK START
+# Begin assignment:
+# Start field access (account_number,1):
+# Start this expr
+move t1, a0
+# End this expr
+move_immed_i t4, 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t2, t4
+move t3, t4
+hload t2, t2, t3
+# End field access (account_number,1)
+move_immed_i t4 0
+hstore t2, t4, t0
+move t4 t0
+# End assignment
+# Begin assignment:
+# Start field access (balance,2):
+# Start this expr
+move t3, a0
+# End this expr
+move_immed_i t7, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t5, t7
+move t6, t7
+hload t5, t5, t6
+# End field access (balance,2)
+move_immed_f t7, 0.0
+move_immed_i t6 0
+hstore t5, t6, t7
+move t6 t7
+# End assignment
+# Begin assignment:
+# Start field access (checkNumber,3):
+# Start this expr
+move t7, a0
+# End this expr
+move_immed_i t10, 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t8, t10
+move t9, t10
+hload t8, t8, t9
+# End field access (checkNumber,3)
+move_immed_i t10, 0
+move_immed_i t9 0
+hstore t8, t9, t10
+move t9 t10
+# End assignment
+# BLOCK END
+ret
+# End of Constructor: (CONSTRUCTOR 2)
+
+
+
+
+# Methods:
+
+
+M_4: # label for method
+# Start of Method: (debit, 4)
+# Reserving temps for formal variables
+# register t0 allocated for variable amount
+# Loading initial values for formal variables
+move t0 a0
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t1 allocated for variable ccn
+# Begin assignment:
+# Start field access (checkNumber,3):
+# Start this expr
+move t2, a0
+# End this expr
+move_immed_i t5, 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t3, t5
+move t4, t5
+hload t3, t3, t4
+# End field access (checkNumber,3)
+move t1 t3
+# End assignment
+
+# If statement start
+# Begin Binary Expression
+# Start field access (balance,2):
+# Start this expr
+move t5, a0
+# End this expr
+move_immed_i t7, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t4, t7
+move t6, t7
+hload t4, t4, t6
+# End field access (balance,2)
+# lt
+ilt t3, t0, t4
+# End Binary Expression
+bz t3, false1
+# True code
+# BLOCK START
+# Start of auto expr: 
+# Start field access (checkNumber,3):
+# Start this expr
+move t4, a0
+# End this expr
+move_immed_i t9, 0
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t6, t9
+move t8, t9
+hload t6, t6, t8
+# End field access (checkNumber,3)
+move_immed_i t7, 1
+iadd t6 t7 t6
+move t9, a0
+move_immed_i t8, 0
+move t7 t8
+hstore t9, t7, t6
+# End of auto expr
+# Begin assignment:
+# Start field access (balance,2):
+# Start this expr
+move t8, a0
+# End this expr
+move_immed_i t10, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t9, t10
+move t7, t10
+hload t9, t9, t7
+# End field access (balance,2)
+# Begin Binary Expression
+# Start field access (balance,2):
+# Start this expr
+move t7, a0
+# End this expr
+move_immed_i t13, 1
+# In the case of a 'primitive' value, this loads the object. Otherwise it loads memory location.
+move t11, t13
+move t12, t13
+hload t11, t11, t12
+# End field access (balance,2)
+# Sub
+fsub t10, t11, t0
+# End Binary Expression
+move_immed_i t13 0
+hstore t9, t13, t10
+move t13 t10
+# End assignment
+# BLOCK END
+jmp if_end1
+false1:
+# False code
+if_end1:
+# If statement end
+
+# Return statement start
+move a0, t1
+ret
+# Return statement end
+# BLOCK END
+# End of Method: (debit, 4)
+
+
+# End of class CheckingAccount
+# ------------------------
+# ------------------------
+# Beginning of class Bank
+
+# Fields: 
+
+
+# Constructors:
+
+
+# Methods:
+
+
+main: # label for method
+# Start of Method: (main, 5)
+# Reserving temps for formal variables
+# Loading initial values for formal variables
+# calling object memory address located in a0
+
+# Method Body:
+# BLOCK START
+# register t0 allocated for variable x
+# register t1 allocated for variable y
+# register t2 allocated for variable z
+# register t3 allocated for variable w
+# register t4 allocated for variable ca1
+# register t5 allocated for variable ca2
+# Begin assignment:
+# Start of new object expr:
+move_immed_i t6, 1
+move_immed_i t7, 3
+halloc t6, t7
+save a0
+move a0, t6
+save a1
+move_immed_i t7, 11111
+move a1 t7
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+call C_2
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore a1
+restore a0
+# End of new object expr:
+move_immed_i t7 0
+hstore t4, t7, t6
+move t7 t6
+# End assignment
+# Begin assignment:
+# Start of new object expr:
+move_immed_i t6, 4
+move_immed_i t8, 3
+halloc t6, t8
+save a0
+move a0, t6
+save a1
+move_immed_i t8, 22222
+move a1 t8
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+call C_2
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore a1
+restore a0
+# End of new object expr:
+move_immed_i t8 0
+hstore t5, t8, t6
+move t8 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 5 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 10000.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_1
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t0 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 7 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 100.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_1
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t1 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 9 # pass in the offset of the calling object as the first parameter
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_3
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+move t6 a0
+restore a0
+# End method call expr
+move t0 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 11 # pass in the offset of the calling object as the first parameter
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_3
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+move t6 a0
+restore a0
+# End method call expr
+move t1 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 13 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 1000.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_2
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t0 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 15 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 1000.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_2
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t1 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 17 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 1000.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_4
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t2 t6
+# End assignment
+# Begin assignment:
+# Start method call expr:
+save a0
+move a0, 18 # pass in the offset of the calling object as the first parameter
+save a1
+move_immed_f t9, 1000.0
+move a1 t9
+save t0
+save t1
+save t2
+save t3
+save t4
+save t5
+save t6
+save t7
+save t8
+call M_4
+restore t0
+restore t1
+restore t2
+restore t3
+restore t4
+restore t5
+restore t6
+restore t7
+restore t8
+restore a1
+move t6 a0
+restore a0
+# End method call expr
+move t3 t6
+# End assignment
+# BLOCK END
+ret
+# End of Method: (main, 5)
+
+
+# End of class Bank
+# ------------------------
+@@exit_reserved_name: 
